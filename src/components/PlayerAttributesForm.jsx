@@ -1,29 +1,17 @@
 import AttributesColumn from "./AttributesColumn";
-import { PlayerContext } from "../context/PlayerContext";
-import {
-  technicalAttributes,
-  mentalAttributes,
-  physicalAttributes,
-} from "../assets/attributeNames";
-import { useState } from "react";
+import { attributeGroups } from "../assets/attributes";
 
 const PlayerAttributesForm = () => {
-  const [playerAttributes, setPlayerAttributes] = useState({});
-
   return (
-    <PlayerContext.Provider value={[playerAttributes, setPlayerAttributes]}>
-      <form className="grid grid-cols-3 gap-2 dev">
+    <form className="grid grid-cols-3 gap-2 dev">
+      {Object.entries(attributeGroups).map(([key, value]) => (
         <AttributesColumn
-          groupName="technical"
-          attributes={technicalAttributes}
+          groupName={key}
+          attributes={Object.values(value)}
+          key={key}
         />
-        <AttributesColumn groupName="mental" attributes={mentalAttributes} />
-        <AttributesColumn
-          groupName="physical"
-          attributes={physicalAttributes}
-        />
-      </form>
-    </PlayerContext.Provider>
+      ))}
+    </form>
   );
 };
 

@@ -1,7 +1,7 @@
-import PlayerAttributes from "./components/PlayerAttributes";
+import PlayerTraitHelper from "./components/PlayerTraitHelper";
 
 function App() {
-  return <PlayerAttributes />;
+  return <PlayerTraitHelper />;
 }
 
 export default App;
