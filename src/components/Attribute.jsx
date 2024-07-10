@@ -13,16 +13,18 @@ const Attribute = ({ attribute }) => {
   };
 
   return (
-    <label className="text-center m-0.5 dev" htmlFor={attribute}>
-      {attribute}
+    <div className="flex flex-column">
+      <label className="text-center m-0.5 dev" htmlFor={attribute}>
+        {attribute}
+      </label>
       <input
         id={attribute}
-        className="float-right text-center max-w-10 dev"
+        className="float-right text-center w-10 dev"
         value={playerAttributes[attribute] ?? ""}
         onChange={onChange}
         type="text"
       />
-    </label>
+    </div>
   );
 };
 

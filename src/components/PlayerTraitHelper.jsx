@@ -8,7 +8,7 @@ const PlayerTraitHelper = () => {
   const [playerAttributes, setPlayerAttributes] = useState({});
 
   return (
-    <div className="centralized grid grid-cols-2 gap-4">
+    <div className="centralized grid grid-cols-2 gap-4 p-12 dev">
       <PlayerContext.Provider value={{ playerAttributes, setPlayerAttributes }}>
         <PlayerAttributesForm />
         <RecomendationsTable />

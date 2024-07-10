@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0) 25%,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 1)
+    ),
+    url("../src/assets/FM24Art.jpg");
+  background-size: 100dvw 100dvh;
+}
+
 .centralized {
   position: absolute;
   left: 50%;
