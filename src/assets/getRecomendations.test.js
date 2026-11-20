@@ -1,3 +1,4 @@
+import { test, expect } from "vitest";
 import { getRecomendations } from "./getRecomendations";
 import { allTraits } from "./playerTraits";
 import { attributeGroups } from "./attributes";
