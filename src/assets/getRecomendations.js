@@ -1,22 +1,19 @@
-import { allTraits } from "./playerTraits";
+import { allTraits, tierWeights } from "./playerTraits";
 
 export const getRecomendations = (playerAttributes) => {
   if (Object.keys(playerAttributes).length === 0) return [];
 
-  let averageTraitRatings = [];
-
-  for (const traitKey in allTraits) {
-    let sum = 0;
-    for (const attributeKey of allTraits[traitKey]) {
-      sum += playerAttributes[attributeKey] ?? 0;
-    }
-    averageTraitRatings.push({
-      trait: traitKey,
-      rating: sum / allTraits[traitKey].length,
-    });
-  }
-
-  averageTraitRatings.sort((a, b) => b.rating - a.rating);
-
-  return averageTraitRatings;
+  return Object.entries(allTraits)
+    .map(([trait, tiers]) => {
+      let sum = 0;
+      let totalWeight = 0;
+      for (const tier in tiers) {
+        for (const attributeKey of tiers[tier]) {
+          sum += (playerAttributes[attributeKey] ?? 0) * tierWeights[tier];
+          totalWeight += tierWeights[tier];
+        }
+      }
+      return { trait, rating: sum / totalWeight };
+    })
+    .sort((a, b) => b.rating - a.rating);
 };
