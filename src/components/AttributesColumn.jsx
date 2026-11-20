@@ -1,6 +1,7 @@
 import Attribute from "./Attribute";
 
-const AttributesColumn = ({ attributes, groupName, ...props }) => {
+// tiers: { [attributeKey]: "key" | "secondary" | "other" } in trait mode, undefined otherwise.
+const AttributesColumn = ({ attributes, groupName, tiers, ...props }) => {
   return (
     <fieldset className="flex flex-col gap-0.5" {...props}>
       {!!groupName && (
@@ -9,7 +10,13 @@ const AttributesColumn = ({ attributes, groupName, ...props }) => {
         </legend>
       )}
       {attributes.map((attribute) => {
-        return <Attribute attribute={attribute} key={attribute} />;
+        return (
+          <Attribute
+            attribute={attribute}
+            tier={tiers && (tiers[attribute] ?? null)}
+            key={attribute}
+          />
+        );
       })}
     </fieldset>
   );

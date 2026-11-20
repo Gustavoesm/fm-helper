@@ -42,3 +42,7 @@ export const attributeGroups = {
     strength: "strength",
   },
 };
+
+// "offTheBall" -> "Off The Ball"
+export const attributeLabel = (key) =>
+  key[0].toUpperCase() + key.slice(1).replace(/[A-Z]/g, " $&");
